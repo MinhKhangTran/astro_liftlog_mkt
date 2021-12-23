@@ -18,19 +18,21 @@ aside{
 }
 </style>
    <aside>
-   {previous &&
+  
      <div class="previous">
-      <i class="fas fa-arrow-left" aria-label="previous page"></i>
-      <a rel="prev" class="page_site" href={previous}>{previous?.split("-").join(" ")}</a>
+      
+      
+      <a rel="prev" class="page_site" href={previous}>{previous?.split("-").join(" ")|| "This is the first Post"}</a>
     </div>
-   }
- 
    
-    {next && 
+ 
+  
     <div class="next">
-      <a rel="next" class="page_site" href={next}>{next?.split("-").join(" ")}</a>
-     <i class="fas fa-arrow-right" aria-label="next page"></i>
+      <a rel="next" class="page_site" href={next}>{next?.split("-").join(" ")|| "This is the last Post"}</a>
+     
+    
+     
     </div>
-    }
+ 
     
     </aside>
