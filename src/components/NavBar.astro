@@ -1,0 +1,52 @@
+---
+import DarkMode from './DarkMode.astro'
+import SkipLink from './SkipLink.astro'
+
+const { current = '' } = Astro.props;
+---
+
+<style>
+nav{
+  display:flex;
+  justify-content: space-between;
+  padding-block: 2rem 0rem;
+  align-items: center;
+}
+ul{
+  display:flex;
+  gap: 1rem;
+  align-items: center;
+}
+li{
+  list-style:none;
+}
+a{
+  text-decoration:none;
+  color: inherit;
+  margin:0
+}
+  a:not(.selected) {
+    opacity: 0.8;
+  }
+
+</style>
+
+<header aria-label="navigation">
+  <SkipLink/>
+  <nav>
+  <a href="/">
+  <img width="50" src="/assets/Logo.webp" alt="a dumbbell as logo of liftlog"/>
+  </a>
+  <ul>
+  <li class="date">
+  <a href="/posts" class={current === "posts" ? "selected" : ""}>Posts</a>
+  </li>
+  <li class="date">
+  <a href="/about" class={current === "about" ? "selected" : ""}>About</a>
+  </li>
+  <li>
+ <DarkMode/>
+  </li>
+  </ul>
+  </nav>
+</header>

@@ -1,0 +1,84 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Title from '../../components/Title.astro';
+import Pagination from '../../components/Pagination.astro';
+
+
+export async function getStaticPaths({paginate}) {
+  const allPosts = Astro.fetchContent<MarkdownFrontmatter>('../../data/post/*.md');
+  const sortedPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
+
+ 
+  return paginate(sortedPosts, {pageSize:10});
+}
+
+// page
+let title = "LiftLog";
+let description = "A Lifting Log for my Liftings";
+const permalink = `${Astro.site.href}posts`;
+let canonicalURL = Astro.request.canonicalURL;
+
+
+
+// collection
+interface MarkdownFrontmatter {
+  publishDate: any;
+  description: string;
+  title: string;
+}
+
+
+const { page } = Astro.props;
+
+
+
+
+---
+
+<Layout title={title} description={description} permalink={permalink} current="posts" canonicalURL={canonicalURL.toString()}>
+
+   <Title>All Posts</Title>
+    
+      <p class="post_total">There are currently {page.total} Posts</p>
+            {page.data.map((post)=>{
+            const href = `/post/${post.file.pathname.split('/').pop().split('.').shift()}`;
+            return(
+                <section aria-label="Post Review">
+                    <a href={href}>
+                        <h2>{post.title}</h2>
+                    </a>
+                    <p class="date">{post.publishDate}</p>
+                    <p class="secondary">{post.description}</p>
+                    <hr/>
+                </section>
+            )
+        })}
+
+
+
+  
+
+    <footer>
+      <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    </footer>
+    
+ <style>
+  section{
+    padding-bottom: 2rem;
+  }
+  a{
+    text-decoration:none;
+    color:inherit;
+  }
+  .secondary{
+    margin-top: 0.75rem;
+  }
+ 
+  .container{
+    margin-bottom:2rem;
+}
+.post_total{
+  padding-bottom: 2rem;
+}
+  </style>
+</Layout>

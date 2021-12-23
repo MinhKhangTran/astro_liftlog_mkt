@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Title from "../components/Title.astro";
+
+
+let title = "LiftLog | About";
+let description = "A Lifting Log for my Liftings";
+const permalink = `${Astro.site.href}about`;
+let canonicalURL = Astro.request.canonicalURL;
+
+---
+
+<Layout title={title} description={description} permalink={permalink} current="about" {canonicalURL}>
+      
+      <style>  
+  p{
+    padding-block: 0 1rem;
+  }
+  .image_wrapper{
+display: flex;
+     justify-content: center;
+     padding-top: 1rem;
+  }
+  
+  </style>
+
+
+       
+        <Title>About</Title>
+        
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus
+      </p>
+
+         <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus
+      </p>
+
+         <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus ven
+      </p>
+
+         <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magnus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus
+      </p>
+      <div class="image_wrapper">
+      <img width="500" height="500" src="/assets/About.webp" alt="An Illustration of a guy showing his biceps.">
+      </div>
+ 
+</Layout>

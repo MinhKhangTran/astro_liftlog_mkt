@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Title from "../components/Title.astro";
+
+
+let title = "LiftLog | 404";
+let description = "A Lifting Log for my Liftings";
+
+---
+
+<Layout title={title} description={description}>
+
+<style>
+  
+  h2{
+      font-size: 2.25rem;
+      padding-block: 0 0.5rem;
+  }
+  .image_wrapper{
+display: flex;
+     justify-content: center;
+     padding-top: 4rem;
+  }
+
+</style>
+        <Title>404</Title>
+      
+      <h2>This is an dead end ...</h2>
+         <a href="/">
+   Take me home.
+    </a>
+    <div class="image_wrapper">
+    
+    <img width="325" src="/assets/Error.webp" alt="a guy who is looking to you behind his shoulder"/>
+    </div>
+</Layout>

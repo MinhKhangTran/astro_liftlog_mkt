@@ -1,0 +1,32 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import NavBar from '../components/NavBar.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  permalink?: string;
+  current?: string;
+  canonicalURL?:string | URL;
+}
+const { title, description, permalink, current,canonicalURL } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description}  canonicalURL={canonicalURL} permalink={permalink} />
+    
+  </head>
+
+  <body>
+    <div  class="container" >
+    <NavBar current={current} />
+    <main id="main-content" aria-label="main">
+      <slot/>
+    </main>
+    <Footer/>
+   
+    </div>
+  </body>
+</html>

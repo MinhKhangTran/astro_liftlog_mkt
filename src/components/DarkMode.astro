@@ -1,0 +1,35 @@
+<button class="darkmode-toggle" aria-pressed="false">Dark Mode On</button>
+
+<script>
+  // variables
+  let darkMode = localStorage.getItem('darkMode')
+  const systemPrefs = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const darkModeToggle = document.querySelector('.darkmode-toggle')
+  // functions
+  const enableDarkMode = _ => {
+    document.documentElement.classList.add('darkmode')
+    darkModeToggle.textContent = 'Dark Mode Off'
+    darkModeToggle.setAttribute('aria-pressed', 'true')
+    localStorage.setItem('darkMode', 'enabled')
+  }
+  const disableDarkMode = _ => {
+    document.documentElement.classList.remove('darkmode')
+    darkModeToggle.textContent = 'Dark Mode On'
+    darkModeToggle.setAttribute('aria-pressed', 'false')
+    localStorage.setItem('darkMode', null)
+  }
+  // execution
+  if (darkMode === 'enabled' || systemPrefs) enableDarkMode()
+  darkModeToggle.addEventListener('click', _ => {
+    darkMode = localStorage.getItem('darkMode')
+    darkMode !== 'enabled'
+      ? enableDarkMode()
+      : disableDarkMode()
+  })
+</script>
+
+<style lang="scss">
+  .darkmode-toggle {
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  }
+</style>

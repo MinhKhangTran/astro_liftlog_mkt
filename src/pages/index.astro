@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Title from "../components/Title.astro";
+
+
+let title = "LiftLog";
+let description = "A Lifting Log for my Liftings";
+const permalink = Astro.site.href;
+let canonicalURL = Astro.request.canonicalURL;
+
+
+
+
+
+// Data fetching here:
+let allPosts = Astro.fetchContent('../data/post/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()).slice(0,4);
+
+---
+<Layout title={title} description={description} permalink={permalink} {canonicalURL}>
+
+<style>
+section{
+    padding-bottom: 2rem;
+  }
+  a{
+    text-decoration:none;
+    color:inherit;
+  }
+  .secondary{
+    margin-top: 0.75rem;
+  }
+  
+
+}
+</style>
+        <Title>LiftLog</Title>
+        {allPosts.map((post)=>{
+            const href = `/post/${post.file.pathname.split('/').pop().split('.').shift()}`;
+            return(
+                <section aria-label="Post Review">
+                    <a href={href}>
+                        <h2>{post.title}</h2>
+                    </a>
+                    <p class="date">{post.publishDate}</p>
+                    <p class="secondary">{post.description}</p>
+                    <hr/>
+                </section>
+            )
+        })}
+         <a href="/posts">
+   View All Posts
+    </a>
+</Layout>

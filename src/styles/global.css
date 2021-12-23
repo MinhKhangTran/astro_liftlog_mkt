@@ -1,0 +1,95 @@
+:root {
+  --background-body: #fafaf9;
+  --text-heading: #1c1917;
+  --text-body: #44403c;
+  --disabled: #a8a29e;
+  --text-button: #fafaf9;
+}
+
+:root.darkmode {
+  --background-body: #292524;
+  --text-heading: #fafaf9;
+  --text-body: #f5f5f4;
+  --text-button: #292524;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: "Quicksand", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background-body);
+  font-size: 1rem;
+  color: var(--text-body);
+  transition: all 0.3s linear;
+}
+h1,
+h2 {
+  font-family: "Exo", sans-serif;
+  color: var(--text-heading);
+}
+h1 {
+  font-weight: 600;
+  font-size: 3rem;
+}
+h2 {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+@media (min-width: 992px) {
+  h1 {
+    font-size: 3.875rem;
+  }
+  h2 {
+    font-size: 2.25rem;
+  }
+}
+hr {
+  margin-top: 2rem;
+  background-image: url(/assets/HR.svg);
+}
+.date {
+  font-weight: 700;
+}
+.secondary {
+  color: var(--text-body);
+}
+.container {
+  max-width: 590px;
+  width: 90%;
+  margin-inline: auto;
+}
+.yt_video {
+  padding-block: 2rem;
+}
+button {
+  padding-inline: 1rem;
+  padding-block: 0.45rem;
+  background: var(--text-body);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-button);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+button:hover {
+  background: var(--text-heading);
+}
+
+a {
+  color: inherit;
+}

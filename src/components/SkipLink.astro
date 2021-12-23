@@ -1,0 +1,29 @@
+<a class="skip-nav-link" href="#main-content">
+ Skip Navigation
+</a>
+
+
+
+<style lang="scss">
+  .skip-nav-link{
+    position: absolute;
+    transform: translateY(-120%);
+    transition: all 300ms ease-in;
+    background: var(--text-body);
+    padding-inline: 1.5rem;
+    padding-block: 0.5rem;
+    left:0;
+
+  font-size: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  border-radius: 0 0 0.25rem 0.25rem;
+  color: var(--text-button);
+
+
+    &:focus{
+      transform: translateY(0);
+    }
+  }
+</style>

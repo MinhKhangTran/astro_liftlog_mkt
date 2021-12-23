@@ -1,0 +1,82 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import Title from '../../components/Title.astro';
+import PageContent from '../../components/PageContent.astro';
+
+export function getStaticPaths() {
+  const posts = Astro.fetchContent('../../data/post/*.md');
+  return posts.map(p => ({
+    params: { slug: p.file.pathname.split('/').pop().split('.').shift() },
+    props: { post: p },
+  }));
+}
+// get slug
+const getPostData= (post)=>{
+  return {
+    slug: post.file.pathname.split('/').pop().split('.').shift()
+  }
+}
+
+const {slug} = getPostData(Astro.props.post)
+const { Content, title, description, publishDate, heroImage } = Astro.props.post;
+const permalink = `${Astro.site.href}post/${slug}`;
+let canonicalURL = Astro.request.canonicalURL;
+
+
+
+// ger current Page
+const currentPage = Astro.request.url.pathname;
+const modCurrentPage = currentPage.split("/post/").pop()
+// get Pagination
+let allPosts = Astro.fetchContent('../../data/post/*.md');
+const titleArray = allPosts.sort((a, b) => new Date(a.publishDate).valueOf() - new Date(b.publishDate).valueOf()).map((post)=>{
+  const urlArray = post.file.pathname.split('/').pop().split('.').shift()
+  return urlArray
+})
+
+const index = titleArray.findIndex(x => x === modCurrentPage || x === modCurrentPage);
+const next = index !== -1 ? (index === titleArray.length - 1 ? null : titleArray[index + 1]) : null;
+const previous = index !== -1 ? (index === 0 ? null : titleArray[index - 1]) : null;
+---
+<style>
+article{
+  margin-block: 2rem;
+}
+h1{
+  font-size: 2.5rem;
+  text-align: center;
+  padding-block: 2rem 0.25rem;
+}
+.date{
+  padding-bottom: 1rem;
+  text-align: center;
+}
+.blog_post{
+ margin-top: 2rem;
+}
+aside{
+  display: flex;
+  justify-content: space-between;
+}
+.page_site {
+  text-transform: capitalize;
+}
+</style>
+<Layout title={title} description={description} permalink={permalink} canonicalURL={canonicalURL.toString()}>
+  <Title>{title}</Title>
+      <p class="date">{publishDate}</p>
+      <a href="/posts">
+    All Posts
+    </a>
+     <article>
+      <Content />
+    </article>
+
+     <PageContent next={next} previous={previous}/>
+ 
+     <a href="/posts">
+    All Posts
+    </a>
+    
+  
+</Layout>
