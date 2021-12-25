@@ -13,8 +13,8 @@ export async function getStaticPaths({paginate}) {
 }
 
 // page
-let title = "LiftLog";
-let description = "A Lifting Log for my Liftings";
+let title = `All Posts`;
+let description = "All posts are listed here chronologically. There are 10 posts per page.";
 const permalink = `${Astro.site.href}posts`;
 let canonicalURL = Astro.request.canonicalURL;
 
