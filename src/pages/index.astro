@@ -8,39 +8,65 @@ let description = "A Lifting Log for my Liftings";
 const permalink = Astro.site.href;
 let canonicalURL = Astro.request.canonicalURL;
 
-
-
-
-
 // Data fetching here:
 let allPosts = Astro.fetchContent('../data/post/*.md');
-allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()).slice(0,4);
+allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf()).slice(0,3);
 
 ---
-<Layout title={title} description={description} permalink={permalink} {canonicalURL}>
-
-<style>
-section{
+<Layout title={title} description={description} permalink={permalink} current="about" {canonicalURL}>
+      
+      <style>  
+  p{
+    padding-block: 0 1rem;
+  }
+  .image_wrapper{
+display: flex;
+     justify-content: center;
+     padding-top: 1rem;
+  }
+  h2{
+    padding-block: 6rem 3rem;
+  }
+  section{
     padding-bottom: 2rem;
   }
   a{
-    text-decoration:none;
+    
     color:inherit;
   }
   .secondary{
-    margin-top: 0.75rem;
+   
   }
   
-
 }
-</style>
+  </style>
+
+
+       
         <Title>LiftLog</Title>
-        {allPosts.map((post)=>{
-            const href = `/post/${post.file.pathname.split('/').pop().split('.').shift()}`;
+        
+      <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus
+      </p>
+
+         <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purusLorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor rhoncus dolor purus
+      </p>
+
+        
+
+         
+      <div class="image_wrapper">
+      <img width="300" height="300" src="/assets/About.webp" alt="An Illustration of a guy showing his biceps.">
+      </div>
+      <article>
+      <h2>The Latest Posts</h2>
+           {allPosts.map((post)=>{
+             const href = `/post/${post.file.pathname.split('/').pop().split('.').shift()}`;
             return(
-                <section aria-label="Post Review">
+              <section aria-label="Post Review">
                     <a href={href}>
-                        <h2>{post.title}</h2>
+                        <h3>{post.title}</h3>
                     </a>
                     <p class="date">{post.publishDate}</p>
                     <p class="secondary">{post.description}</p>
@@ -48,7 +74,9 @@ section{
                 </section>
             )
         })}
+              </article>
          <a href="/posts">
    View All Posts
     </a>
+ 
 </Layout>

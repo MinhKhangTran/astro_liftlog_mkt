@@ -1,5 +1,7 @@
 ---
 const {next,previous} = Astro.props
+
+
 ---
 <style>
 
@@ -18,21 +20,21 @@ aside{
 }
 </style>
    <aside>
-  
-     <div class="previous">
+  {previous ?(<div class="previous">
       
       
-      <a rel="prev" class="page_site" href={previous}>{previous?.split("-").join(" ")|| "This is the first Post"}</a>
-    </div>
+      <a rel="prev" class="page_site" href={`/post/${previous}`}>{previous?.split("-").join(" ")}</a>
+    </div>):("-")}
+     
    
  
-  
-    <div class="next">
-      <a rel="next" class="page_site" href={next}>{next?.split("-").join(" ")|| "This is the last Post"}</a>
+  {next ?(<div class="next">
+      <a rel="next" class="page_site" href={`/post/${next}`}>{next?.split("-").join(" ")}</a>
      
     
      
-    </div>
+    </div>):("-")}
+    
  
     
     </aside>
