@@ -1,6 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1dc7368a-276c-4aca-b9bf-496582fc7638/deploy-status)](https://app.netlify.com/sites/liftlog-mkt/deploys)
-
-# LiftLog
+# 52 Websites in 52 Weeks
 
 A simple Blog built with [Astro](https://astro.build/).
 
