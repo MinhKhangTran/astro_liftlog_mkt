@@ -12,4 +12,20 @@ export default {
     // port: 3000,             // The port to run the dev server on.
   },
   renderers: [],
+  markdownOptions: {
+    render: [
+      "@astrojs/markdown-remark",
+      {
+        // Pick a syntax highlighter. Can be 'prism' (default), 'shiki' or false to disable any highlighting.
+        syntaxHighlight: "shiki",
+        // If you are using shiki, here you can define a global theme and
+        // add custom languages.
+        shikiConfig: {
+          theme: "github-dark",
+          langs: [],
+          wrap: false,
+        },
+      },
+    ],
+  },
 };
